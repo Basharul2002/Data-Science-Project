@@ -1,85 +1,144 @@
-# Loan Eligibility Prediction
+<h1 align="center">🏦 Loan Prediction System 🏦</h1>
 
-This project aims to predict loan eligibility based on various features such as applicant's income, loan amount, credit history, etc. The project involves data cleaning, preprocessing, model building, and evaluation using classification algorithms like Decision Tree and Naive Bayes.
+<p align="center">
+  A machine learning-based loan prediction system that predicts loan approval status based on applicant information! 🔍💡
+</p>
 
-## Project Structure
+<p align="center">
+  <img src="https://img.shields.io/badge/Python-3.x-blue"/>
+  <img src="https://img.shields.io/badge/Scikit--learn-0.24-orange"/>
+  <img src="https://img.shields.io/badge/Pandas-1.3.3-yellowgreen"/>
+  <img src="https://img.shields.io/badge/NumPy-1.21-lightblue"/>
+  <!--<img src="https://img.shields.io/github/license/basharul2002/Loan-Prediction-System"/> -->
+</p>
 
-The main file used in this project is `Loan Eligibility Prediction.ipynb`. The dataset used for training and testing can be found in the `./sample_data` folder.
+---
 
-### Dataset
+## 📖 Overview
 
-The dataset contains information about applicants' income, loan amount, credit history, and other related attributes. 
+This **Loan Prediction System** leverages machine learning algorithms to predict whether a loan application will be approved or not based on various factors like applicant income, loan amount, credit history, and more. It implements both **Decision Tree** and **Naive Bayes** classifiers and provides accuracy evaluation metrics for both models.
 
-- **Training Data**: `loan_train_data.csv`
-- **Testing Data**: `loan_test_data.csv`
+## 💡 Features
+- **Data Preprocessing**: Handling missing values, feature engineering (e.g., total income, log transformations)
+- **Model Training**: Training with both Decision Tree and Naive Bayes classifiers
+- **Evaluation**: Predicting on test data and calculating accuracy
+- **Support for Test Data**: Test dataset handling and prediction
 
-### Features of the Dataset
+## 🛠️ Technologies Used
 
-- **ApplicantIncome**: The income of the loan applicant.
-- **CoapplicantIncome**: The income of the co-applicant (if any).
-- **LoanAmount**: The loan amount requested.
-- **Loan_Amount_Term**: Term of the loan in months.
-- **Credit_History**: Credit history (1 means good credit, 0 means bad credit).
-- **Loan_Status**: Whether the loan was approved or not (Y/N).
-- Other features include `Gender`, `Married`, `Education`, `Self_Employed`, etc.
+- **Python**: Programming language used for the project
+- **NumPy**: For numerical operations
+- **Pandas**: For data manipulation and analysis
+- **Matplotlib**: For plotting boxplots and histograms
+- **Scikit-learn**: For model building and evaluation
 
-### Data Preprocessing
+## 🗂 Dataset
 
-The following preprocessing steps were performed:
+- **Training Dataset**: `loan_train_data.csv`
+- **Test Dataset**: `loan_test_data.csv`
 
-- Handled missing values by filling them with either the mode or mean of the respective columns.
-- Created new features such as `TotalIncome` and `TotalIncome_log`.
-- Applied log transformations on skewed data like `LoanAmount` and `TotalIncome`.
-- Encoded categorical variables using `LabelEncoder`.
-- Standardized the feature data using `StandardScaler`.
+The datasets contain information such as:
+- **Applicant Income**
+- **Coapplicant Income**
+- **Loan Amount**
+- **Credit History**
+- **Loan Status**
 
-### Machine Learning Models
+---
 
-Two classification algorithms were used to predict loan eligibility:
+## 🚀 How It Works
 
-1. **Decision Tree Classifier**: 
-   - Accuracy: 70.73%
-   ```python
-   from sklearn.tree import DecisionTreeClassifier 
-   DTClassifier = DecisionTreeClassifier(criterion='entropy', random_state=0)
-   DTClassifier.fit(x_train, y_train)
-   y_pred = DTClassifier.predict(x_test)
-   print(f'The accuracy of decision tree is: {metrics.accuracy_score(y_test, y_pred)}')
-   ```
-2. Naive Bayes Classifier:
-   - Accuracy: Based on testing data.
-     ````python
-     from sklearn.naive_bayes import GaussianNB
-     NBClassifier = GaussianNB()
-     NBClassifier.fit(x_train, y_train)
-     y_pred = NBClassifier.predict(x_test)
-     print(f'The accuracy of Naive Bayes is: {metrics.accuracy_score(y_test, y_pred)}')
-     ````
+### 1️⃣ Data Preprocessing
+- **Missing Values**: Handled by filling with mode/mean for categorical/numerical features.
+- **Log Transformations**: Log transformation applied to `LoanAmount` and `TotalIncome` to normalize skewed distributions
 
-### Predictions on Test Data
-The model was tested on a separate test dataset (loan_test_data.csv), and the Naive Bayes classifier was used to predict loan eligibility for new applicants.
-  ````python
-  pred = NBClassifier.predict(test)
-  ````
+### 2️⃣ Feature Engineering
+- Created new features like `TotalIncome` (sum of applicant and coapplicant income) and its log transformation for better model performance
 
-### Libraries Used
-  - **pandas**: for data manipulation and analysis.
-  - **numpy**: for numerical computations.
-  - **matplotlib**: for data visualization.
-  - **scikit-learn**: for machine learning models and metrics.
+### 3️⃣ Model Training
+- **Decision Tree Classifier**: Trained with entropy criterion to maximize information gain.
+- **Naive Bayes Classifier**: Gaussian Naive Bayes model used for classification.
 
-### How to Run
-1. Clone the repository or download the project files.
-2. Install the required Python libraries:
-  ````bash
-  pip install pandas numpy scikit-learn matplotlib
-  ````
-3. Run the Jupyter Notebook file **Loan Eligibility Prediction.ipynb**
+### 4️⃣ Model Evaluation
+- **Accuracy** of both models evaluated on the test dataset using `accuracy_score` from **sklearn.metrics**
+
+### 5️⃣ Test Data Prediction
+- The system handles an unseen test dataset to predict loan approval statuses
+
+---
+
+## 📊 Data Visualization
+
+Some key data visualizations implemented:
+- **Boxplots**: For visualizing the distribution of applicant income, loan amounts
+- **Histograms**: Displaying the frequency distribution of income and loan amounts
+
+Example visualizations:
+
+```python
+# Boxplot for Applicant Income
+dataset.boxplot(column='ApplicantIncome')
+
+# Histogram for Loan Amount
+dataset['LoanAmount'].hist(bins=20)
+```
+
+---
+
+## ⚙️ How to Run
+
+### 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/Basharul2002/Data-Science-Project/tree/main/Loan%20Eligibility%20Prediction.git
+```
+
+### 2️⃣ Install Dependencies
+
+Ensure that you have the necessary libraries installed. You can install them using:
+
+```bash
+pip install numpy pandas scikit-learn matplotlib
+```
+
+### 3️⃣ Execute the Code
+
+Run the main script to train the model and make predictions:
+
+```bash
+python Loan Eligibility Prediction.ipynb
+```
+
+---
+
+## 🔍 Example Output
+
+Sample accuracy for the classifiers:
+
+```bash
+The accuracy of Decision Tree is: 0.81
+The accuracy of Naive Bayes is: 0.79
+```
+
+---
 
 
-### Results
-The project provides a simple yet effective approach to predicting loan eligibility using Decision Tree and Naive Bayes models. These models can be further tuned and optimized for better performance.
+## 📂 Directory Structure
 
-### Conclusion
-This project demonstrates how to preprocess data, build machine learning models, and evaluate their performance in predicting loan eligibility. The accuracy of the models can be improved with more advanced techniques like hyperparameter tuning or using more complex algorithms.
+```
+Loan-Prediction-System/
+│
+├── sample_data/
+│   ├── loan_train_data.csv            # Training dataset
+│   ├── loan_test_data.csv             # Test dataset
+│
+├── Loan Eligibility Prediction.ipynb  # Main Python script
+└── README.md                          # Documentation
+```
 
+<!--
+---
+
+## 📜 License
+
+This project is licensed under the [MIT License](LICENSE)
